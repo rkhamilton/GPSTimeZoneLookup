@@ -4,24 +4,27 @@
   Released into the public domain.
 */
 
-#ifndef GPSTimeZoneLookup
-#define GPSTimeZoneLookup
+#ifndef GPSTimeZoneLookup_h
+#define GPSTimeZoneLookup_h
 
 #include <Arduino.h>
-#include <TinyGPS++.h>
 
 class GPSTimeZoneLookup
 {
   public:
-    GPSTimeZoneLookup(float lat, float long);
+    GPSTimeZoneLookup(float myLat, float myLong);
 	int GMTOffset;
 	bool implementsDST;
+    float latitude;
+    float longitude;
   private:
+    double distanceBetween(double lat1, double long1, double lat2, double long2);
+    void findClosestCity();
 	float _closestCityLat;
 	float _closestCityLong;
-	float _closestCityDistance = 3.0E+38; //very large distance, any point on earth will be closer
+	float _closestCityDistance;
 	float _closestCityUsesDST;
 	float _closestCityGMTOffset;
-}
+};
 
 #endif
