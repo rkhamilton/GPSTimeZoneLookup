@@ -10,7 +10,7 @@ This Arduino library performs local time zone lookups based on GPS coordinates f
 There are two major caveats in this library.
 
 1. The library determines the time zone based on finding the closest populated location in it's know data set. If your coordinates are close to the edge of a time zone transition then the results may be incorrect. I couldn't think of a perfectly accurate solution to this problem that would fit into the memory of an Arduino. Suggestions are welcome!
-2. The arrays of GPS coordinates have been aggressively trimmed down to the minimal set that I could find to identify all US time zones. However, there is a peak memory usage of 3.2 KB. That will fit into an Arduino Mega 2560, but not into an Uno. I believe this could be rectified by clever use of PROGMEM, but I'm not sure how to do it. Help is welcome on this one too!
+2. The arrays of GPS coordinates have been aggressively trimmed down to the minimal set that I could find to identify all US time zones. **However, there is a peak memory usage of 3.2 KB.** That will fit into an Arduino Mega 2560, but not into an Uno. I believe this could be rectified by clever use of PROGMEM, but I'm not sure how to do it. Help is welcome on this one too!
 
 #Acknowledgements
 * The data source for the determination is based on the geonames.org database of populated US cities (cities15000.txt). 
