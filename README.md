@@ -11,7 +11,7 @@ There are two major caveats in this library.
 2. The arrays of GPS coordinates have been aggressively trimmed down to the minimal set that I could find to identify all US time zones. However, there is a peak memory usage of 3.2 KB. That will fit into an Arduino Mega 2560, but not into an Uno. I believe this could be rectified by clever use of PROGMEM, but I'm not sure how to do it. Help is welcome on this one too!
 
 #Acknowledgements
-The data source for the determination is based on the geonames.org database of populated US cities (cities15000.txt). 
+The data source for the determination is based on the geonames.org database of populated US cities (cities15000.txt).
 The distance calculation used to find the closest geonames location is taken from the TinyGPSPlus library (http://arduiniana.org/libraries/tinygpsplus/).
 
 # Usage
