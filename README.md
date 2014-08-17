@@ -5,21 +5,19 @@ https://github.com/rkhamilton/GPSTimeZoneLookup
 Ryan Hamilton
 August 2014
 
-This Arduino library performs local time zone lookups based on GPS coordinates for locations in the United States. Given a latitude / longitude coordinate, the library identifies the time zone, and whether that time zone respects daylight savings time. This can be used in combination with the Timezone library (https://github.com/JChristensen/Timezone) to calculate local time from UTC.  I have not tackled this problem for locations outside of the US. The database of coordinates that this method uses to identify the timezone would be too large to be practical for use on a microcontroller, so I restricted this initial scope to only the US.
+This Arduino library performs local time zone lookups based on GPS coordinates for locations in the United States. Given a latitude / longitude coordinate, the library identifies the time zone, and whether that time zone respects daylight savings time. This can be used in combination with the Timezone library (https://github.com/JChristensen/Timezone) to calculate local time from UTC.  
 
-There are two major caveats in this library.
-
-1. The library determines the time zone based on finding the closest populated location in it's know data set. If your coordinates are close to the edge of a time zone transition then the results may be incorrect. I couldn't think of a perfectly accurate solution to this problem that would fit into the memory of an Arduino. Suggestions are welcome!
-2. The arrays of GPS coordinates have been aggressively trimmed down to the minimal set that I could find to identify all US time zones. **However, there is a peak memory usage of 3.2 KB.** That will fit into an Arduino Mega 2560, but not into an Uno. I believe this could be rectified by clever use of PROGMEM, but I'm not sure how to do it. Help is welcome on this one too!
+The library determines the time zone based on finding the closest populated location in it's know data set. If your coordinates are close to the edge of a time zone transition then the results may be incorrect. I couldn't think of a perfectly accurate solution to this problem that would fit into the memory of an Arduino. Suggestions are welcome!
 
 #Acknowledgements
 * The data source for the determination is based on the geonames.org database of populated US cities (cities15000.txt). 
-* The distance calculation used to find the closest geonames location is taken from the TinyGPSPlus library (http://arduiniana.org/libraries/tinygpsplus/).
+* The distance calculation used to find the closest geonames location is taken from the [TinyGPSPlus library](http://arduiniana.org/libraries/tinygpsplus/).
+* The [Flash](http://arduiniana.org/libraries/flash/) library is used to keep the memory requirements down. As of August 17, 2014 the current version of Flash (version 5) does not compile using Arduino 1.5.7. I forked the library and applied some patches that were posted on the comments of the author's site (I take no credit!) and the revised library compiles and seems to work properly.
 
 # Usage
 
 ```Arduino
-#include <Timezone.h> //https://github.com/JChristensen/Timezone
+#include <Timezone.h>
 TimeChangeRule timeChangeRuleStart;
 TimeChangeRule timeChangeRuleStop;
 
