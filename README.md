@@ -5,7 +5,7 @@ https://github.com/rkhamilton/GPSTimeZoneLookup
 Ryan Hamilton
 August 2014
 
-This Arduino library performs local time zone lookups based on GPS coordinates for locations in the United States. Given a latitude / longitude coordinate, the library identifies the time zone, and whether that time zone respects daylight savings time. This can be used in combination with the Timezone library (https://github.com/JChristensen/Timezone) to calculate local time from UTC.  
+This Arduino library performs local time zone lookups based on GPS coordinates for locations in the United States. Given a latitude / longitude coordinate, the library identifies the time zone, and whether that time zone respects daylight savings time. I show an example below of how this can be used in combination with the [Timezone library](https://github.com/JChristensen/Timezone) to calculate local time from UTC.
 
 The library determines the time zone based on finding the closest populated location in it's know data set. If your coordinates are close to the edge of a time zone transition then the results may be incorrect. I couldn't think of a perfectly accurate solution to this problem that would fit into the memory of an Arduino. Suggestions are welcome!
 
